@@ -9,18 +9,25 @@ public class BulletScript : MonoBehaviour
 {
     public float bulletSpeed;
     public Rigidbody _rb;
+    public float bulletForce = 0.1f;
 
-
-    private void Start()
+    private void Awake()
     {
         attack();
     }
 
+    private void FixedUpdate()
+    {
+        //_rb.AddForce(_rb.velocity.normalized * bulletForce);
+        transform.LookAt(transform.position + _rb.velocity.normalized);   
+    }
+
+
+
     private void attack()
     {
-     
-        _rb.AddForce(transform.parent.forward*bulletSpeed);
-        Invoke("destroyBullet",4);
+        _rb.AddForce(transform.forward*bulletSpeed);
+        Invoke("destroyBullet",4f);
         
     }
 
@@ -29,8 +36,4 @@ public class BulletScript : MonoBehaviour
         Destroy(gameObject);
         
     }
-
-    
-
-    
 }

@@ -76,6 +76,11 @@ public class PlayerMovementController : MonoBehaviour
     void FireBasic()
     {
         Debug.Log("FireBasic");
-        //Instantiate(bullet, gunPoint.transform);
+        Instantiate(bullet, transform);
+    }
+
+    private void ResetTransform()
+    {
+        transform.rotation = Quaternion.identity;
     }
 }

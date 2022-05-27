@@ -58,6 +58,7 @@
   <ItemGroup>
     <Compile Include="Assets/Scipts/Player/PlayerMovementController.cs" />
     <Compile Include="Assets/Scipts/GameManager.cs" />
+    <Compile Include="Assets/Scipts/BulletScript.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
