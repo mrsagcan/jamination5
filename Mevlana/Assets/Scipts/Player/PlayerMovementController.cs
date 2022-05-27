@@ -4,8 +4,14 @@ using UnityEngine;
 
 public class PlayerMovementController : MonoBehaviour
 {
+    [Header("CombatAttributes")]
+    [SerializeField] private GameObject gunPoint;
+    [SerializeField] private GameObject bullet;
+
+    [Header("MovementAttributes")]
     [SerializeField] private float angularSpeed = 10f;
     [SerializeField] private float forwardSpeed = 100f;
+
     private Rigidbody playerRb;
     private Vector3 playerCurrentAngularVeloctiy;
     private bool isTurning;
@@ -26,6 +32,7 @@ public class PlayerMovementController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             isTurning = false;
+            FireBasic();
             MoveForward();
         }
         if (Input.GetKeyUp(KeyCode.Space))
@@ -64,5 +71,11 @@ public class PlayerMovementController : MonoBehaviour
     {
         Vector3 forwardVector = transform.right;
         playerRb.AddForce(forwardVector * forwardSpeed, ForceMode.Acceleration);
+    }
+
+    void FireBasic()
+    {
+        Debug.Log("FireBasic");
+        //Instantiate(bullet, gunPoint.transform);
     }
 }
