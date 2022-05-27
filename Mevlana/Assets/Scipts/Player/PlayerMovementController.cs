@@ -69,7 +69,7 @@ public class PlayerMovementController : MonoBehaviour
 
     void MoveForward()
     {
-        Vector3 forwardVector = transform.right;
+        Vector3 forwardVector = transform.forward;
         playerRb.AddForce(forwardVector * forwardSpeed, ForceMode.Acceleration);
     }
 
