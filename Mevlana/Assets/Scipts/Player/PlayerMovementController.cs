@@ -115,7 +115,7 @@ public class PlayerMovementController : MonoBehaviour
     void FireBasic()
     {
         Debug.Log("FireBasic");
-        Instantiate(bullet, transform);
+        Instantiate(bullet, transform.position, transform.rotation);
     }
 
     private void ResetTransform()
