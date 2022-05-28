@@ -24,14 +24,19 @@ public class PlayerMovementController : MonoBehaviour
     private bool isTurning;
     private bool isTurningRight;
     private KeyCode actionKey;
-
     private float holdTime;
+
+    [Header("PlayerAttributes")]
     [SerializeField] private float cooldownTime;
-    
+    [SerializeField] private float spawnSecondsAfter = 2f;
+    private GameManager gameManager;
+    private Vector3 spawnedPosition;
 
     // Start is called before the first frame update
     void Start()
     {
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        spawnedPosition = transform.position;
         if (playerId == 0)
         {
             actionKey = KeyCode.Space;
@@ -57,33 +62,13 @@ public class PlayerMovementController : MonoBehaviour
         if (Input.GetKeyUp(actionKey))
         {
             isTurning = true;
-            playerRb.velocity = Vector3.zero;
             FireBasic();
             isTurningRight = !isTurningRight;
         }
-        
-        //Will be added in UI
-        /*if (speedPowerActivated)
+        if (isTurning)
         {
-            speedImg.fillAmount -= 0.125f*Time.deltaTime;
-            if(speedImg.fillAmount<0.01)
-            {
-                speedImg.gameObject.SetActive(false);
-                forwardSpeed -= forwardSpeed / 2;
-                playerRb.AddForce(-transform.forward * forwardSpeed/2, ForceMode.Acceleration);
-                speedPowerActivated = false;
-            }
-        } 
-        if (smallPowerActivated)
-        {
-            smallImg.fillAmount -= 0.125f*Time.deltaTime;
-            if(smallImg.fillAmount<0.01)
-            {
-                smallImg.gameObject.SetActive(false);
-                transform.localScale *= 2;
-                smallPowerActivated = false;
-            }
-        }*/
+            ResetTransform();
+        }
     }
 
     private void FixedUpdate()
@@ -128,7 +113,7 @@ public class PlayerMovementController : MonoBehaviour
 
     private void ResetTransform()
     {
-        transform.rotation = Quaternion.identity;
+        playerRb.velocity = Vector3.zero;
     }
     
     private void OnTriggerEnter(Collider other)
@@ -180,5 +165,10 @@ public class PlayerMovementController : MonoBehaviour
 
         }
         
+    }
+
+    public void OnHitDie()
+    {
+        StartCoroutine(gameManager.SpawnAgain(gameObject, spawnSecondsAfter, spawnedPosition));
     }
 }

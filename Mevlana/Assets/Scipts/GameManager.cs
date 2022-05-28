@@ -22,4 +22,13 @@ public class GameManager : MonoBehaviour
             Destroy(flagDeployLocs[i].gameObject);
         }
     }
+
+    public IEnumerator SpawnAgain(GameObject _gameObject, float time, Vector3 spawnPosition)
+    {
+
+        _gameObject.transform.position = new Vector3(999, 999, 999);
+        yield return new WaitForSeconds(time);
+        Debug.Log("Spawned Again");
+        _gameObject.transform.position = spawnPosition;
+    }
 }
