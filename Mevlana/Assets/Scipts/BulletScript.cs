@@ -41,12 +41,13 @@ public class BulletScript : MonoBehaviour
     {
         if(collision.transform.CompareTag("Bullet"))
         {
-            Debug.Log("Bullet collision");
             Destroy(gameObject);
         }
         else if(collision.transform.CompareTag("Player"))
         {
-            Destroy(collision.gameObject);
+            PlayerMovementController playerRef = collision.gameObject.GetComponent<PlayerMovementController>();
+            playerRef.OnHitDie();
+            Destroy(gameObject);
         }
     }
 }
