@@ -25,7 +25,7 @@ public class PlayerMovementController : MonoBehaviour
     private bool isTurningRight;
     private KeyCode actionKey;
 
-    [SerializeField] private float holdTime;
+    private float holdTime;
     [SerializeField] private float cooldownTime;
     
 
