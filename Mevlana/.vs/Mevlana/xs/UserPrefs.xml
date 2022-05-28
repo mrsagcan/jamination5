@@ -1,16 +1,15 @@
 ﻿<Properties StartupConfiguration="{483A2F13-138A-ADC8-3410-75A0EBD04307}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scipts/Flag.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scipts/GameManager.cs">
     <Files>
-      <File FileName="Assets/Scipts/PlayerMovementController.cs" Line="26" Column="21" />
-      <File FileName="Assets/Scipts/BulletScript.cs" Line="27" Column="26" />
-      <File FileName="Assets/Scipts/Player/PlayerFlagController.cs" Line="10" Column="1" />
-      <File FileName="Assets/Scipts/GameManager.cs" Line="21" Column="1" />
-      <File FileName="Assets/Scipts/Flag.cs" Line="10" Column="9" />
+      <File FileName="Assets/Scipts/Flag.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scipts/BulletScript.cs" />
+      <File FileName="Assets/Scipts/Player/PlayerFlagController.cs" />
+      <File FileName="Assets/Scipts/GameManager.cs" Line="18" Column="85" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="953ce6e0-693b-4d49-9f33-296a7fd3f2b4" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="028ca79d-3aba-4c78-9021-8d709af3f5c4" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
