@@ -56,9 +56,10 @@
     <Analyzer Include="/Applications/Visual Studio.app/Contents/Resources/lib/monodevelop/AddIns/MonoDevelop.Unity/Analyzers/Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets/Scipts/Player/PlayerMovementController.cs" />
     <Compile Include="Assets/Scipts/GameManager.cs" />
+    <Compile Include="Assets/Scipts/Player/PlayerMovementController.cs" />
     <Compile Include="Assets/Scipts/BulletScript.cs" />
+    <Compile Include="Assets/Scipts/Player/PlayerFlagController.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

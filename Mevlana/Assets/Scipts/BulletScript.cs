@@ -18,7 +18,7 @@ public class BulletScript : MonoBehaviour
 
     private void FixedUpdate()
     {
-        //_rb.AddForce(_rb.velocity.normalized * bulletForce);
+        _rb.AddForce(_rb.velocity.normalized * bulletForce);
         transform.LookAt(transform.position + _rb.velocity.normalized);   
     }
 

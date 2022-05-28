@@ -12,27 +12,25 @@ public class PlayerMovementController : MonoBehaviour
     [SerializeField] private float angularSpeed = 10f;
     [SerializeField] private float forwardSpeed = 100f;
 
+    public int playerId;
+
     private Rigidbody playerRb;
     private Vector3 playerCurrentAngularVeloctiy;
     private bool isTurning;
     private bool isTurningRight;
     private KeyCode actionKey;
 
-    private void Awake()
-    {
-        if(transform.name == "Player1")
-        {
-            actionKey = KeyCode.Space;
-        }
-        if(transform.name == "Player2")
-        {
-            actionKey = KeyCode.Mouse0;
-        }
-    }
-
     // Start is called before the first frame update
     void Start()
     {
+        if (playerId == 0)
+        {
+            actionKey = KeyCode.Space;
+        }
+        if (playerId == 1)
+        {
+            actionKey = KeyCode.Mouse0;
+        }
         playerRb = GetComponent<Rigidbody>();
         playerCurrentAngularVeloctiy = Vector3.zero;
         isTurning = true;

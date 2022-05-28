@@ -137,9 +137,10 @@ GameObject:
   - component: {fileID: 4695290162464226900}
   - component: {fileID: 4695290162464226902}
   - component: {fileID: 4695290162464226903}
+  - component: {fileID: 4132941398972630105}
   m_Layer: 0
-  m_Name: Player1
-  m_TagString: Untagged
+  m_Name: Player
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -172,9 +173,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gunPoint: {fileID: 4066432625133328721}
-  bullet: {fileID: 0}
+  bullet: {fileID: 3137376920313746166, guid: cb100b7adbbc44fc6b7613ab4bbaa452, type: 3}
   angularSpeed: 10
   forwardSpeed: 250
+  playerId: 0
 --- !u!54 &4695290162464226903
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -191,6 +193,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 84
   m_CollisionDetection: 0
+--- !u!114 &4132941398972630105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4695290162464226901}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cb13769f48e649fba791d576e4146e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4695290163579445118
 GameObject:
   m_ObjectHideFlags: 0
