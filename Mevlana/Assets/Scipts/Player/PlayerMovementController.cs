@@ -169,6 +169,8 @@ public class PlayerMovementController : MonoBehaviour
 
     public void OnHitDie()
     {
+        PlayerFlagController flagControllerRef = gameObject.GetComponent<PlayerFlagController>();
+        flagControllerRef.isCarrying = false;
         StartCoroutine(gameManager.SpawnAgain(gameObject, spawnSecondsAfter, spawnedPosition));
     }
 }

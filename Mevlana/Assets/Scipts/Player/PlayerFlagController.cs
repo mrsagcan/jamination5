@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerFlagController : MonoBehaviour
 {
-    private bool isCarrying = false;
+    public bool isCarrying = false;
     private GameObject flag;
     private Vector3 flagCarryPoint;
 
