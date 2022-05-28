@@ -25,6 +25,10 @@ public class PlayerMovementController : MonoBehaviour
     private bool isTurningRight;
     private KeyCode actionKey;
 
+    private float holdTime;
+    [SerializeField] private float cooldownTime;
+    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -115,7 +119,11 @@ public class PlayerMovementController : MonoBehaviour
     void FireBasic()
     {
         Debug.Log("FireBasic");
-        Instantiate(bullet, transform.position, transform.rotation);
+        if (Time.time > holdTime + cooldownTime)
+        {
+            Instantiate(bullet, transform.position, transform.rotation);
+            holdTime = Time.time;
+        }
     }
 
     private void ResetTransform()
