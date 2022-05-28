@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerMovementController : MonoBehaviour
 {
@@ -11,6 +12,10 @@ public class PlayerMovementController : MonoBehaviour
     [Header("MovementAttributes")]
     [SerializeField] private float angularSpeed = 10f;
     [SerializeField] private float forwardSpeed = 100f;
+    
+    //[SerializeField] private Image speedImg;
+    //[SerializeField] private Image smallImg;
+    private bool speedPowerActivated, smallPowerActivated;
 
     public int playerId;
 
@@ -52,6 +57,29 @@ public class PlayerMovementController : MonoBehaviour
             FireBasic();
             isTurningRight = !isTurningRight;
         }
+        
+        //Will be added in UI
+        /*if (speedPowerActivated)
+        {
+            speedImg.fillAmount -= 0.125f*Time.deltaTime;
+            if(speedImg.fillAmount<0.01)
+            {
+                speedImg.gameObject.SetActive(false);
+                forwardSpeed -= forwardSpeed / 2;
+                playerRb.AddForce(-transform.forward * forwardSpeed/2, ForceMode.Acceleration);
+                speedPowerActivated = false;
+            }
+        } 
+        if (smallPowerActivated)
+        {
+            smallImg.fillAmount -= 0.125f*Time.deltaTime;
+            if(smallImg.fillAmount<0.01)
+            {
+                smallImg.gameObject.SetActive(false);
+                transform.localScale *= 2;
+                smallPowerActivated = false;
+            }
+        }*/
     }
 
     private void FixedUpdate()
@@ -93,5 +121,56 @@ public class PlayerMovementController : MonoBehaviour
     private void ResetTransform()
     {
         transform.rotation = Quaternion.identity;
+    }
+    
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("speed"))
+        {
+            powerUp(0);
+            Destroy(other.gameObject);
+        } else if (other.gameObject.CompareTag("sizeSmaller"))
+        {
+            powerUp(1);
+            Destroy(other.gameObject);
+        }
+    }
+    
+
+    private void powerUp(int pwr)
+    {
+        switch (pwr)
+        {
+            case 0:
+                speedPowerActivated = true;
+                forwardSpeed += forwardSpeed / 2;
+                playerRb.AddForce(transform.forward * forwardSpeed/2, ForceMode.Acceleration);
+                Invoke("finishPowerUp", 5);
+                break;
+            case 1:
+                gameObject.transform.localScale /= 2;
+                smallPowerActivated = true;
+                Invoke("finishPowerUp", 5);
+                break;
+        }
+    }
+
+    //Will be deleted after UI added
+    private void finishPowerUp()
+    {
+        if (speedPowerActivated)
+        {
+            forwardSpeed -= forwardSpeed / 2;
+            playerRb.AddForce(-transform.forward * forwardSpeed/2, ForceMode.Acceleration);
+            speedPowerActivated = false;
+        }
+
+        if (smallPowerActivated)
+        {
+            gameObject.transform.localScale *= 2;
+            smallPowerActivated = false;
+
+        }
+        
     }
 }
