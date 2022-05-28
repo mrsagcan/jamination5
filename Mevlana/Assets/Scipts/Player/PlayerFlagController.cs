@@ -22,7 +22,16 @@ public class PlayerFlagController : MonoBehaviour
         if(other.gameObject.CompareTag("Flag"))
         {
             flag = other.gameObject;
-            isCarrying = true;
+            Flag flagRef = flag.GetComponent<Flag>();
+            PlayerMovementController playerRef = transform.GetComponent<PlayerMovementController>();
+            if(flagRef.flagId != playerRef.playerId)
+            {
+                isCarrying = true;
+            }
+            else if(flagRef.flagId == playerRef.playerId)
+            {
+                flag.transform.position = flagRef.flagInitPosition;
+            }
         }
     }
 }
