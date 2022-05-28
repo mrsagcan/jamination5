@@ -12,7 +12,7 @@ public class PlayerMovementController : MonoBehaviour
     [Header("MovementAttributes")]
     [SerializeField] private float angularSpeed = 10f;
     [SerializeField] private float forwardSpeed = 100f;
-    
+
     //[SerializeField] private Image speedImg;
     //[SerializeField] private Image smallImg;
     private bool speedPowerActivated, smallPowerActivated;

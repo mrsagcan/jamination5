@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flagId: 0
+  flagInitPosition: {x: 0, y: 0, z: 0}
 --- !u!136 &4998553924608494706
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -71,9 +72,11 @@ GameObject:
   - component: {fileID: 4998553924842255076}
   - component: {fileID: 4998553924842255075}
   - component: {fileID: 4998553924842255074}
+  - component: {fileID: 2617729794131713520}
+  - component: {fileID: 19906397378754225}
   m_Layer: 0
   m_Name: PlayerFlagPlatform
-  m_TagString: Untagged
+  m_TagString: FlagPlatform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -142,6 +145,32 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &2617729794131713520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4998553924842255073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db35cccf6c34a4fb9b111196f22eb7d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  platformId: 0
+--- !u!65 &19906397378754225
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4998553924842255073}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.5, y: 10, z: 1.5}
+  m_Center: {x: 0, y: 4.29118, z: 0}
 --- !u!1001 &5197269663435317072
 PrefabInstance:
   m_ObjectHideFlags: 0

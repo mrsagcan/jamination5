@@ -5,6 +5,8 @@ using UnityEngine;
 public class PlayerFlagController : MonoBehaviour
 {
     public bool isCarrying = false;
+    public Vector3 otherTeamFlagPlatformPostition;
+
     private GameObject flag;
     private Vector3 flagCarryPoint;
 
@@ -21,6 +23,7 @@ public class PlayerFlagController : MonoBehaviour
     {
         if(other.gameObject.CompareTag("Flag"))
         {
+            Debug.Log("Flag collided");
             flag = other.gameObject;
             Flag flagRef = flag.GetComponent<Flag>();
             PlayerMovementController playerRef = transform.GetComponent<PlayerMovementController>();
@@ -31,6 +34,17 @@ public class PlayerFlagController : MonoBehaviour
             else if(flagRef.flagId == playerRef.playerId)
             {
                 flag.transform.position = flagRef.flagInitPosition;
+            }
+        }
+
+        if (other.gameObject.CompareTag("FlagPlatform") && isCarrying)
+        {
+            int platformId = other.gameObject.GetComponent<FlagPlatformController>().platformId;
+            int playerId = gameObject.GetComponent<PlayerMovementController>().playerId;
+            if (playerId == platformId)
+            {
+                GameManager gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+                gameManager.ScoreOneForPlayer(gameObject.GetComponent<PlayerMovementController>().playerId);
             }
         }
     }

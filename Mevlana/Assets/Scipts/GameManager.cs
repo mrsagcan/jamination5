@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     public List<Transform> playerDeployLocs = new List<Transform>();
     public List<GameObject> flagPlatforms = new List<GameObject>();
     public List<Transform> flagDeployLocs = new List<Transform>();
+    public List<int> playerScores = new List<int>();
            
     // Update is called once per frame
     void Awake()
@@ -18,9 +19,17 @@ public class GameManager : MonoBehaviour
             player.gameObject.GetComponent<PlayerMovementController>().playerId = i;
             Destroy(playerDeployLocs[i].gameObject);
             GameObject flagPlatform = Instantiate(flagPlatforms[i], flagDeployLocs[i].position, flagDeployLocs[i].rotation);
+            flagPlatform.GetComponent<FlagPlatformController>().platformId = i;
             flagPlatform.gameObject.transform.Find("Flag").GetComponent<Flag>().flagId = i;
             Destroy(flagDeployLocs[i].gameObject);
+            playerScores.Add(0);
         }
+    }
+
+    public List<int> ScoreOneForPlayer(int playerId)
+    {
+        playerScores[playerId]++;
+        return playerScores;
     }
 
     public IEnumerator SpawnAgain(GameObject _gameObject, float time, Vector3 spawnPosition)

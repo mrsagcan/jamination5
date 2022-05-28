@@ -206,8 +206,10 @@ MonoBehaviour:
   gunPoint: {fileID: 4066432625133328721}
   bullet: {fileID: 3137376920313746166, guid: cb100b7adbbc44fc6b7613ab4bbaa452, type: 3}
   angularSpeed: 2
-  forwardSpeed: 250
+  forwardSpeed: 500
   playerId: 0
+  cooldownTime: 3
+  spawnSecondsAfter: 2
 --- !u!54 &4695290162464226903
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -236,6 +238,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cb13769f48e649fba791d576e4146e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isCarrying: 0
+  otherTeamFlagPlatformPostition: {x: 0, y: 0, z: 0}
 --- !u!1 &4695290163579445118
 GameObject:
   m_ObjectHideFlags: 0
