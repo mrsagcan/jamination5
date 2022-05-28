@@ -36,4 +36,17 @@ public class BulletScript : MonoBehaviour
         Destroy(gameObject);
         
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.transform.CompareTag("Bullet"))
+        {
+            Debug.Log("Bullet collision");
+            Destroy(gameObject);
+        }
+        else if(collision.transform.CompareTag("Player"))
+        {
+            Destroy(collision.gameObject);
+        }
+    }
 }

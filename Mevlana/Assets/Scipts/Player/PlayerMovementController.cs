@@ -16,6 +16,19 @@ public class PlayerMovementController : MonoBehaviour
     private Vector3 playerCurrentAngularVeloctiy;
     private bool isTurning;
     private bool isTurningRight;
+    private KeyCode actionKey;
+
+    private void Awake()
+    {
+        if(transform.name == "Player1")
+        {
+            actionKey = KeyCode.Space;
+        }
+        if(transform.name == "Player2")
+        {
+            actionKey = KeyCode.Mouse0;
+        }
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -29,16 +42,16 @@ public class PlayerMovementController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(actionKey))
         {
             isTurning = false;
-            FireBasic();
             MoveForward();
         }
-        if (Input.GetKeyUp(KeyCode.Space))
+        if (Input.GetKeyUp(actionKey))
         {
             isTurning = true;
             playerRb.velocity = Vector3.zero;
+            FireBasic();
             isTurningRight = !isTurningRight;
         }
     }
