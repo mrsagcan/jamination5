@@ -60,6 +60,7 @@
     <Compile Include="Assets/Scipts/Player/PlayerMovementController.cs" />
     <Compile Include="Assets/Scipts/BulletScript.cs" />
     <Compile Include="Assets/Scipts/Player/PlayerFlagController.cs" />
+    <Compile Include="Assets/Scipts/Flag.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
