@@ -1800,8 +1800,8 @@ MonoBehaviour:
   - {fileID: 4998553924842255073, guid: 2da6cb27f3cc848f58a7c97f58c6c311, type: 3}
   - {fileID: 4998553924842255073, guid: 2da6cb27f3cc848f58a7c97f58c6c311, type: 3}
   flagDeployLocs:
-  - {fileID: 527914016}
   - {fileID: 1732737890}
+  - {fileID: 527914016}
 --- !u!4 &2005921177
 Transform:
   m_ObjectHideFlags: 0
