@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class PlayerMovementController : MonoBehaviour
 {
+    
     [Header("CombatAttributes")]
     [SerializeField] private GameObject gunPoint;
     [SerializeField] private GameObject bullet;
@@ -12,10 +13,11 @@ public class PlayerMovementController : MonoBehaviour
     [Header("MovementAttributes")]
     [SerializeField] private float angularSpeed = 10f;
     [SerializeField] private float forwardSpeed = 100f;
-
-    //[SerializeField] private Image speedImg;
-    //[SerializeField] private Image smallImg;
-    private bool speedPowerActivated, smallPowerActivated;
+    
+    
+    private bool speedPowerActivated, smallPowerActivated, coolDownActivated;
+    [SerializeField] private int powerUpReturnTime;
+    private Vector3 destination = new Vector3(999,999,999);
 
     public int playerId;
 
@@ -25,9 +27,10 @@ public class PlayerMovementController : MonoBehaviour
     private bool isTurningRight;
     private KeyCode actionKey;
     private float holdTime;
+    [SerializeField] public bool justAttacked;
 
     [Header("PlayerAttributes")]
-    [SerializeField] private float cooldownTime;
+    [SerializeField] public float cooldownTime;
     [SerializeField] private float spawnSecondsAfter = 2f;
     private GameManager gameManager;
     private Vector3 spawnedPosition;
@@ -108,6 +111,7 @@ public class PlayerMovementController : MonoBehaviour
         {
             Instantiate(bullet, transform.position, transform.rotation);
             holdTime = Time.time;
+            justAttacked = true;
         }
     }
 
@@ -121,12 +125,15 @@ public class PlayerMovementController : MonoBehaviour
         if (other.gameObject.CompareTag("speed"))
         {
             powerUp(0);
-            Destroy(other.gameObject);
+            StartCoroutine(powerUpTurner(powerUpReturnTime, other.gameObject, destination, other.gameObject.transform.position));
         } else if (other.gameObject.CompareTag("sizeSmaller"))
         {
             powerUp(1);
-            Destroy(other.gameObject);
-        }
+            StartCoroutine(powerUpTurner(powerUpReturnTime, other.gameObject, destination, other.gameObject.transform.position));        }
+        else if (other.gameObject.CompareTag("coolDown"))
+        {
+            powerUp(2);
+            StartCoroutine(powerUpTurner(powerUpReturnTime, other.gameObject, destination, other.gameObject.transform.position));        }
     }
     
 
@@ -141,9 +148,15 @@ public class PlayerMovementController : MonoBehaviour
                 Invoke("finishPowerUp", 5);
                 break;
             case 1:
-                gameObject.transform.localScale /= 2;
+                if(gameObject.transform.localScale.x == 1)
+                    gameObject.transform.localScale /= 2;
                 smallPowerActivated = true;
                 Invoke("finishPowerUp", 5);
+                break;
+            case 2:
+                cooldownTime /= 2;
+                coolDownActivated = true;
+                Invoke("finishPowerUp",5);
                 break;
         }
     }
@@ -165,6 +178,13 @@ public class PlayerMovementController : MonoBehaviour
 
         }
         
+        if (coolDownActivated)
+        {
+            cooldownTime *= 2;
+            coolDownActivated = false;
+
+        }
+        
     }
 
     public void OnHitDie()
@@ -172,5 +192,13 @@ public class PlayerMovementController : MonoBehaviour
         PlayerFlagController flagControllerRef = gameObject.GetComponent<PlayerFlagController>();
         flagControllerRef.isCarrying = false;
         StartCoroutine(gameManager.SpawnAgain(gameObject, spawnSecondsAfter, spawnedPosition));
+    }
+
+    IEnumerator powerUpTurner(int time, GameObject powerUp, Vector3 destination, Vector3 currentPosition)
+    {
+        powerUp.transform.position = destination;
+        yield return new WaitForSeconds(time);
+        powerUp.transform.position = currentPosition;
+
     }
 }

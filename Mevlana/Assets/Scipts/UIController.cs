@@ -1,21 +1,28 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIController : MonoBehaviour
 {
-    [SerializeField] private GameObject gameController, oynaButton, geriButton, hakkindaButtonu;
+    [SerializeField] private GameObject gameController, oynaButton, geriButton, hakkindaButtonu, ilkPanel;
     [SerializeField] private TextMeshProUGUI hkndText;
-    
+    private bool started;
 
-    // Start is called before the first frame update
+
+    [SerializeField] private Image speedImg,smallImg,coolDownImg,speedImg2,smallImg2,coolDownImg2;
+
 
     public void startButton()
     {
         gameController.SetActive(true);
-        gameObject.SetActive(false);
+        ilkPanel.SetActive(false);
+        started = true;
+        //player1 = gameController.GetComponent<GameManager>().players[0];
+        //player2 = gameController.GetComponent<GameManager>().players[1];
     }
 
     public void hakkindaButton()
@@ -33,4 +40,25 @@ public class UIController : MonoBehaviour
         geriButton.SetActive(false);
         hakkindaButtonu.SetActive(true);
     }
+
+   /*
+    * if (speedPowerActivated)
+        {
+            
+            speedImg.fillAmount -= 0.125f*Time.deltaTime;
+            if(speedImg.GetComponent<Image>().fillAmount<0.01)
+            {
+                speedImg.gameObject.SetActive(false);
+            }
+        } 
+        if (smallPowerActivated)
+        {
+            smallImg.GetComponent<Image>().fillAmount -= 0.125f*Time.deltaTime;
+            if(smallImg.GetComponent<Image>().fillAmount<0.01)
+            {
+                smallImg.gameObject.SetActive(false);
+            }
+        }
+    */
+    
 }
