@@ -116,7 +116,7 @@ public class PlayerMovementController : MonoBehaviour
         Debug.Log("FireBasic");
         if (Time.time > holdTime + cooldownTime)
         {
-            Instantiate(bullet, transform.position, transform.rotation);
+            Instantiate(bullet, gunPoint.transform.position, gunPoint.transform.rotation);
             holdTime = Time.time;
             justAttacked = true;
         }
