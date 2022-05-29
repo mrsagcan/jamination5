@@ -23,6 +23,7 @@ public class PlayerMovementController : MonoBehaviour
     private Vector3 destination = new Vector3(999,999,999);
 
     public GameObject bulletTrailPS;
+    public GameObject deathExplotion;
     public int playerId;
     public int skor;
 
@@ -39,10 +40,12 @@ public class PlayerMovementController : MonoBehaviour
     [SerializeField] private float spawnSecondsAfter = 2f;
     private GameManager gameManager;
     private Vector3 spawnedPosition;
+    private AudioSource audioSource;
 
     // Start is called before the first frame update
     void Start()
     {
+        audioSource = gameObject.GetComponent<AudioSource>();
         currentX = transform.localScale.x;
         firstSpeed = forwardSpeed;
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
@@ -199,6 +202,8 @@ public class PlayerMovementController : MonoBehaviour
     public void OnHitDie()
     {
         PlayerFlagController flagControllerRef = gameObject.GetComponent<PlayerFlagController>();
+        Instantiate(deathExplotion, transform.position, Quaternion.identity);
+        audioSource.Play();
         flagControllerRef.isCarrying = false;
         StartCoroutine(gameManager.SpawnAgain(gameObject, spawnSecondsAfter, spawnedPosition));
     }
