@@ -13,6 +13,7 @@ public class PowerUp : MonoBehaviour
     private int playerIdUI = -1;
     private GameObject[] players;
     float currentCooldownTime = 0;
+    public bool firstMoment;
 
     private void Start()
     {
@@ -70,15 +71,7 @@ public class PowerUp : MonoBehaviour
         }
     }
 
-    /*private void Update()
-    {
-        
-
-        currentCooldownTime += Time.deltaTime;
-        Debug.Log(currentCooldownTime);
-    }*/
-
-    private void FixedUpdate()
+    private void Update()
     {
 
         players = GameObject.FindGameObjectsWithTag("Player");
@@ -88,19 +81,29 @@ public class PowerUp : MonoBehaviour
             {
                 if (player.GetComponent<PlayerMovementController>().playerId == 0)
                 {
-                    p1cooldwn.fillAmount +=
-                        (player.GetComponent<PlayerMovementController>().cooldownTime * Time.deltaTime) / 12;
-                    if (p1cooldwn.fillAmount > 0.98)
+                    if (firstMoment)
+                    {
+                        p1cooldwn.fillAmount = 0;
+                        firstMoment = false;
+                    }
+                    p1cooldwn.fillAmount += 0.35f / player.GetComponent<PlayerMovementController>().cooldownTime * Time.deltaTime;
+                    if (p1cooldwn.fillAmount > 0.99)
                     {
                         p1cooldwn.fillAmount = 0;
                         player.GetComponent<PlayerMovementController>().justAttacked = false;
                     }
                 }
+                
                 else
                 {
+                    if (firstMoment)
+                    {
+                        p1cooldwn.fillAmount = 0;
+                        firstMoment = false;
+                    }
                     p2cooldwn.fillAmount +=
-                        (player.GetComponent<PlayerMovementController>().cooldownTime * Time.deltaTime)/12;
-                    if (p2cooldwn.fillAmount > 0.98)
+                        0.35f / player.GetComponent<PlayerMovementController>().cooldownTime * Time.deltaTime;
+                    if (p2cooldwn.fillAmount > 0.99)
                     {
                         p2cooldwn.fillAmount = 0;
                         player.GetComponent<PlayerMovementController>().justAttacked = false;
