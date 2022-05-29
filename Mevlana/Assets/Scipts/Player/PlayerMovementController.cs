@@ -22,6 +22,7 @@ public class PlayerMovementController : MonoBehaviour
     [SerializeField] private int powerUpReturnTime;
     private Vector3 destination = new Vector3(999,999,999);
 
+    public GameObject bulletTrailPS;
     public int playerId;
     public int skor;
 
@@ -113,10 +114,11 @@ public class PlayerMovementController : MonoBehaviour
 
     void FireBasic()
     {
-        Debug.Log("FireBasic");
         if (Time.time > holdTime + cooldownTime)
         {
-            Instantiate(bullet, gunPoint.transform.position, gunPoint.transform.rotation);
+            GameObject bulletToBeFollowed = Instantiate(bullet, gunPoint.transform.position, gunPoint.transform.rotation);
+            GameObject bulletTrailRef = Instantiate(bulletTrailPS, gunPoint.transform.position, gunPoint.transform.rotation);
+            bulletTrailRef.GetComponent<BulletTrailParticleSystem>().bulletToBeFollowed = bulletToBeFollowed;
             holdTime = Time.time;
             justAttacked = true;
         }

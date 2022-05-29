@@ -1,12 +1,13 @@
 ﻿<Properties StartupConfiguration="{483A2F13-138A-ADC8-3410-75A0EBD04307}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scipts/FlagPlatformController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scipts/BulletTrailParticleSystem.cs">
     <Files>
-      <File FileName="Assets/Scipts/Player/PlayerFlagController.cs" Line="8" Column="11" />
-      <File FileName="Assets/Scipts/Player/PlayerMovementController.cs" Line="20" Column="25" />
-      <File FileName="Assets/Scipts/Flag.cs" Line="25" Column="13" />
-      <File FileName="Assets/Scipts/BulletScript.cs" Line="50" Column="33" />
-      <File FileName="Assets/Scipts/GameManager.cs" Line="21" Column="65" />
-      <File FileName="Assets/Scipts/FlagPlatformController.cs" Line="8" Column="2" />
+      <File FileName="Assets/Scipts/GameManager.cs" Line="10" Column="67" />
+      <File FileName="Assets/Scipts/Player/PlayerMovementController.cs" Line="120" Column="2" />
+      <File FileName="Assets/Scipts/UIController.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scipts/PowerUp.cs" Line="139" Column="1" />
+      <File FileName="Assets/48 Particle Effect Pack/Script/csShowAllEffect.cs" Line="22" Column="51" />
+      <File FileName="Assets/Scipts/BulletScript.cs" Line="20" Column="6" />
+      <File FileName="Assets/Scipts/BulletTrailParticleSystem.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
