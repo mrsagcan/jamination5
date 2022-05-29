@@ -47,8 +47,12 @@ public class PlayerFlagController : MonoBehaviour
                 gameManager.ScoreOneForPlayer(gameObject.GetComponent<PlayerMovementController>().playerId);
                 isCarrying = false;
                 gameManager.ReSpawnAllFlags();
-
-
+                GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+                for (int i = 0; i < players.Length; i++)
+                {
+                    players[i].GetComponent<PlayerMovementController>().OnHitDie();
+                }
+                
             }
         }
     }
