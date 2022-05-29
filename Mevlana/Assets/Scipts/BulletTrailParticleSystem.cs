@@ -17,9 +17,10 @@ public class BulletTrailParticleSystem : MonoBehaviour
     {
         if(bulletToBeFollowed != null)
         {
-            if (hasFired)
-            {
-                Instantiate(bulletFirePS, bulletToBeFollowed.transform.position, bulletToBeFollowed.transform.rotation);
+            if (hasFired){
+
+                Debug.Log("BUM!");
+                //Instantiate(bulletFirePS, bulletToBeFollowed.transform.position, bulletToBeFollowed.transform.rotation);
                 hasFired = false;
             }
             transform.position = bulletToBeFollowed.transform.position;

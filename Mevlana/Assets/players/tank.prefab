@@ -26,6 +26,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1.223, z: -0.82}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4886190403082703463}
   m_RootOrder: 1
@@ -56,6 +57,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0.489, y: -4.154, z: 0.524}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4886190403234097121}
   m_RootOrder: 0
@@ -90,6 +92,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -20, y: 0.48, z: -5.34}
   m_LocalScale: {x: 2, y: 2, z: 2}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4886190404249318217}
   - {fileID: 1642042607520366397}
@@ -114,7 +117,7 @@ MonoBehaviour:
   angularSpeed: 2
   forwardSpeed: 250
   powerUpReturnTime: 5
-  bulletTrailPS: {fileID: 0}
+  bulletTrailPS: {fileID: 8763606596338888577, guid: e09bc8c63e3f8441a934bd31d85137da, type: 3}
   playerId: 0
   skor: 0
   justAttacked: 0
@@ -193,6 +196,7 @@ Transform:
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0.1, y: 0.40999997, z: 0.5}
   m_LocalScale: {x: 1.5, y: 0.2, z: 0.2}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7861434681941954947}
   m_Father: {fileID: 4886190404249318217}
@@ -217,6 +221,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -289,6 +294,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4886190403234097121}
   m_Father: {fileID: 4886190403082703463}
@@ -313,6 +319,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
