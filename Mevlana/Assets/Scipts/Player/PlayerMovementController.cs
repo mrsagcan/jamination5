@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PlayerMovementController : MonoBehaviour
@@ -13,13 +14,16 @@ public class PlayerMovementController : MonoBehaviour
     [Header("MovementAttributes")]
     [SerializeField] private float angularSpeed = 10f;
     [SerializeField] private float forwardSpeed = 100f;
+    private float firstSpeed;
     
     
     private bool speedPowerActivated, smallPowerActivated, coolDownActivated;
+    private float currentX;
     [SerializeField] private int powerUpReturnTime;
     private Vector3 destination = new Vector3(999,999,999);
 
     public int playerId;
+    public int skor;
 
     private Rigidbody playerRb;
     private Vector3 playerCurrentAngularVeloctiy;
@@ -38,6 +42,8 @@ public class PlayerMovementController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        currentX = transform.localScale.x;
+        firstSpeed = forwardSpeed;
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         spawnedPosition = transform.position;
         if (playerId == 0)
@@ -57,6 +63,7 @@ public class PlayerMovementController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        checkScore();
         if (Input.GetKeyDown(actionKey))
         {
             isTurning = false;
@@ -148,7 +155,7 @@ public class PlayerMovementController : MonoBehaviour
                 Invoke("finishPowerUp", 5);
                 break;
             case 1:
-                if(gameObject.transform.localScale.x == 1)
+                if(gameObject.transform.localScale.x == currentX)
                     gameObject.transform.localScale /= 2;
                 smallPowerActivated = true;
                 Invoke("finishPowerUp", 5);
@@ -166,7 +173,7 @@ public class PlayerMovementController : MonoBehaviour
     {
         if (speedPowerActivated)
         {
-            forwardSpeed -= forwardSpeed / 2;
+            forwardSpeed -= firstSpeed / 2;
             playerRb.AddForce(-transform.forward * forwardSpeed/2, ForceMode.Acceleration);
             speedPowerActivated = false;
         }
@@ -200,5 +207,25 @@ public class PlayerMovementController : MonoBehaviour
         yield return new WaitForSeconds(time);
         powerUp.transform.position = currentPosition;
 
+    }
+
+    private void checkScore()
+    {
+        if (playerId == 0)
+        {
+            skor = gameManager.playerScores[0];
+            if (skor == 3)
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            }
+        }
+        else
+        {
+            skor = gameManager.playerScores[1];
+            if (skor == 4)
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            }
+        }
     }
 }

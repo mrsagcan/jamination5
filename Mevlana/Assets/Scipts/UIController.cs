@@ -21,8 +21,6 @@ public class UIController : MonoBehaviour
         gameController.SetActive(true);
         ilkPanel.SetActive(false);
         started = true;
-        //player1 = gameController.GetComponent<GameManager>().players[0];
-        //player2 = gameController.GetComponent<GameManager>().players[1];
     }
 
     public void hakkindaButton()
@@ -41,24 +39,6 @@ public class UIController : MonoBehaviour
         hakkindaButtonu.SetActive(true);
     }
 
-   /*
-    * if (speedPowerActivated)
-        {
-            
-            speedImg.fillAmount -= 0.125f*Time.deltaTime;
-            if(speedImg.GetComponent<Image>().fillAmount<0.01)
-            {
-                speedImg.gameObject.SetActive(false);
-            }
-        } 
-        if (smallPowerActivated)
-        {
-            smallImg.GetComponent<Image>().fillAmount -= 0.125f*Time.deltaTime;
-            if(smallImg.GetComponent<Image>().fillAmount<0.01)
-            {
-                smallImg.gameObject.SetActive(false);
-            }
-        }
-    */
+   
     
 }

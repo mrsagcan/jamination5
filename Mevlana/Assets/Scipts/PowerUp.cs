@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,6 +10,7 @@ public class PowerUp : MonoBehaviour
 {
     [SerializeField] private Image spdImg, smallImg, coolImg, spdImg2, smallImg2, coolImg2,p1cooldwn, p2cooldwn;
     [SerializeField] private List<Image> puImages;
+    [SerializeField] private TextMeshProUGUI skor;
     private int powerUp;
     private int playerIdUI = -1;
     private GameObject[] players;
@@ -81,6 +83,7 @@ public class PowerUp : MonoBehaviour
             {
                 if (player.GetComponent<PlayerMovementController>().playerId == 0)
                 {
+                    skor.text = players[0].GetComponent<PlayerMovementController>().skor+"-"+players[1].GetComponent<PlayerMovementController>().skor;
                     if (firstMoment)
                     {
                         p1cooldwn.fillAmount = 0;
@@ -96,6 +99,8 @@ public class PowerUp : MonoBehaviour
                 
                 else
                 {
+                    skor.text = players[1].GetComponent<PlayerMovementController>().skor+"-"+players[0].GetComponent<PlayerMovementController>().skor;
+
                     if (firstMoment)
                     {
                         p1cooldwn.fillAmount = 0;
@@ -112,7 +117,7 @@ public class PowerUp : MonoBehaviour
             }
             
         }
-        
+
         
         for (int i = 0; i < puImages.Count; i++)
         {
