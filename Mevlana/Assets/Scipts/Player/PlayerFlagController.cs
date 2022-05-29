@@ -45,6 +45,10 @@ public class PlayerFlagController : MonoBehaviour
             {
                 GameManager gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
                 gameManager.ScoreOneForPlayer(gameObject.GetComponent<PlayerMovementController>().playerId);
+                isCarrying = false;
+                gameManager.ReSpawnAllFlags();
+
+
             }
         }
     }

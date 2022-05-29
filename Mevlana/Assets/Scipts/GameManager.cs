@@ -21,7 +21,6 @@ public class GameManager : MonoBehaviour
             GameObject flagPlatform = Instantiate(flagPlatforms[i], flagDeployLocs[i].position, flagDeployLocs[i].rotation);
             flagPlatform.GetComponent<FlagPlatformController>().platformId = i;
             flagPlatform.gameObject.transform.Find("Flag").GetComponent<Flag>().flagId = i;
-            Destroy(flagDeployLocs[i].gameObject);
             playerScores.Add(0);
         }
     }
@@ -40,4 +39,16 @@ public class GameManager : MonoBehaviour
         Debug.Log("Spawned Again");
         _gameObject.transform.position = spawnPosition;
     }
+
+    public void ReSpawnAllFlags()
+    {
+        GameObject[] flags = GameObject.FindGameObjectsWithTag("Flag");
+        for (int i = 0; i < players.Count; i++)
+        {
+            Destroy(flags[i].gameObject);
+            GameObject flagPlatform = Instantiate(flagPlatforms[i], flagDeployLocs[i].position, flagDeployLocs[i].rotation);
+            flagPlatform.GetComponent<FlagPlatformController>().platformId = i;
+            flagPlatform.gameObject.transform.Find("Flag").GetComponent<Flag>().flagId = i;
+        }
+     }
 }
